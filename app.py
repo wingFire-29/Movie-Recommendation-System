@@ -5,6 +5,10 @@ import pandas as pd
 import requests
 import certifi
 
+@st.cache_data
+def load_pickle_from_url(url):
+    response = requests.get(url)
+    return pickle.loads(response.content)
 
 def fetch_poster(movie_id):
     url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key=8265bd1679663a7ea12ac168da84d2e8&language=en-US"
@@ -14,7 +18,7 @@ def fetch_poster(movie_id):
     # response = requests.get(url, timeout=10, headers={"Connection": "close"})
     # data = response.json()
     
-    poster_path = data['poster_path']
+    poster_path = data.get['poster_path']
     # full_path = "https://image.tmdb.org/t/p/w500/" + poster_path
     # return full_path  
     if poster_path:
@@ -39,10 +43,14 @@ def recommend(movie):
     return recommended_movies,recommended_movies_posters   
 
 
-movies_dict=pickle.load(open('movie_dict.pkl','rb'))
-movies=pd.DataFrame(movies_dict)
+# movies_dict=pickle.load(open('movie_dict.pkl','rb'))
+# movies=pd.DataFrame(movies_dict)
 
-similarity=pickle.load(open('similarity.pkl','rb'))
+# similarity=pickle.load(open('similarity.pkl','rb'))
+movies_dict = load_pickle_from_url("https://drive.google.com/uc?id=1WjT97gyk6k8GITXZXVIJ0Wi7MZzHVT3B")
+similarity = load_pickle_from_url("https://drive.google.com/uc?id=1Whlvl4OnjYHcL8pY83qCjvDNJd3X4mD2")
+
+movies = pd.DataFrame(movies_dict)
 
 st.title('MovieBaaz.com')
 
