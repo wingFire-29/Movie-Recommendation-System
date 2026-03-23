@@ -1,0 +1,5 @@
+venv311/
+.ipynb_checkpoints/
+.virtual_documents/
+*.pkl
+*.csv
