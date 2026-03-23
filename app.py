@@ -47,8 +47,8 @@ def recommend(movie):
 # movies=pd.DataFrame(movies_dict)
 
 # similarity=pickle.load(open('similarity.pkl','rb'))
-movies_dict = load_pickle_from_url("https://drive.google.com/uc?id=1WjT97gyk6k8GITXZXVIJ0Wi7MZzHVT3B")
-similarity = load_pickle_from_url("https://drive.google.com/uc?id=1Whlvl4OnjYHcL8pY83qCjvDNJd3X4mD2")
+movies_dict = load_pickle_from_url("https://drive.google.com/file/d/1WjT97gyk6k8GITXZXVIJ0Wi7MZzHVT3B/view?usp=sharing")
+similarity = load_pickle_from_url("https://drive.google.com/file/d/1Whlvl4OnjYHcL8pY83qCjvDNJd3X4mD2/view?usp=sharing")
 
 movies = pd.DataFrame(movies_dict)
 
